@@ -1,0 +1,1 @@
+{"name":"gagan-ai-pm-portfolio","version":"2.0.0","private":true,"description":"Evidence-led AI Product Manager portfolio","scripts":{"build":"node generate.cjs","check":"node generate.cjs && node verify.cjs"}}

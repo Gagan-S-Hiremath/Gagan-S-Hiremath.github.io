@@ -1,0 +1,6 @@
+﻿"artifact_status","priority","capability","acceptance_criterion"
+"Independent design","P0","Explicit confirmation","Given a chosen slot, read back doctor, date, time, and timezone before creating the booking."
+"Independent design","P0","Truthful booking state","Given the scheduling API fails, never say the appointment is confirmed."
+"Independent design","P0","Safe rescheduling","Given rescheduling fails, preserve the original appointment and explain its status."
+"Independent design","P0","Human transfer","Given a caller requests staff, transfer with captured context; on failure offer an agreed callback path."
+"Independent design","P1","Interruptions and retries","Given an interruption, stop speech promptly; given a repeated booking request, use an idempotency key to avoid duplicates."

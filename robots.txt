@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gagan-s-hiremath.github.io/sitemap.xml

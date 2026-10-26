@@ -1,0 +1,4 @@
+﻿"case_id","scenario","expected_behavior","severity","execution_status"
+"CART-01","Budget + laptop + rain cover","Recommend only products satisfying all three constraints.","Material","Illustrative design example; no scored model output"
+"CART-02","No qualifying item","Explain no match and clarify; do not quietly relax the budget.","Material","Illustrative design example; no scored model output"
+"CART-03","Inventory changes mid-session","Revalidate and disclose unavailability before handoff.","Material","Illustrative design example; no scored model output"

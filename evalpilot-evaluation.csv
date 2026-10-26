@@ -1,0 +1,4 @@
+﻿"case_id","scenario","expected_behavior","severity","execution_status"
+"EVAL-01","Higher mean; critical regression","Block and identify the exact failing gate.","Critical","Illustrative design example; no scored model output"
+"EVAL-02","Candidate missing five cases","Mark comparison incomplete; do not score absent cases as passes.","Material","Illustrative design example; no scored model output"
+"EVAL-03","Judge says pass; gold says fail","Record disagreement and request adjudication.","Material","Illustrative design example; no scored model output"

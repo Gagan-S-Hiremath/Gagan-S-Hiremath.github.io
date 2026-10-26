@@ -1,0 +1,7 @@
+﻿"artifact_status","priority","capability","acceptance_criterion"
+"Implementation status stated per item","P0 · implemented","Validate prospect input","Missing required fields and conflicting company/title values hold the affected row."
+"Implementation status stated per item","P0 · implemented","Evidence-aware strategy","Signal-led drafting requires supported company evidence; role-led output must not invent account events."
+"Implementation status stated per item","P0 · implemented","Human approval","Approve, Edit, and Reject resume the correct thread; edited copy is revalidated."
+"Implementation status stated per item","P0 · implemented","Idempotent review","A repeated submission or review event does not create duplicate execution or decisions."
+"Implementation status stated per item","P1 · proposed","Numerical ICP scoring","Define transparent, reviewer-labeled eligibility criteria before adding a score and threshold."
+"Implementation status stated per item","P1 · proposed","Controlled outreach experiment","Record consented manual outreach outcomes with distinct-prospect denominators; synthetic rows remain excluded."

@@ -1,0 +1,6 @@
+﻿"artifact_status","priority","capability","acceptance_criterion"
+"Retrospective reconstruction","P0","Evidence-linked extraction","Given a KPI is extracted, its source document, page, and supporting text are visible."
+"Retrospective reconstruction","P0","Validation queue","Given required values conflict, publication is blocked until a reviewer resolves the conflict."
+"Retrospective reconstruction","P0","Canonical schema","Given a new layout, output must pass the versioned schema or enter review; fields are not silently discarded."
+"Retrospective reconstruction","P1","Grounded query","Given no approved evidence supports an answer, the interface states that it cannot confirm the answer."
+"Retrospective reconstruction","P1","Feedback and audit","Given a correction, retain the prior value, reviewer decision, and document version."

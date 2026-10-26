@@ -1,0 +1,6 @@
+﻿"artifact_status","priority","capability","acceptance_criterion"
+"Independent design","P0","Comparable versions","Given two runs, compare only matching case IDs and report missing or duplicate IDs."
+"Independent design","P0","Critical release gate","Given one confirmed critical regression, show BLOCK even if the average score improves."
+"Independent design","P0","Evidence inspection","Given a failed criterion, show input, output, rule/judge rationale, and evaluator version."
+"Independent design","P1","Human adjudication","Given a reviewer disagrees, preserve both labels and record the decision and rationale."
+"Independent design","P1","Live trace sampling","Given pilot traces, sample by risk as well as random selection and redact sensitive fields."

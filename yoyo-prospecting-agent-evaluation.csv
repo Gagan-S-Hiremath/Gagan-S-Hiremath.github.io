@@ -1,0 +1,4 @@
+﻿"case_id","scenario","expected_behavior","severity","execution_status"
+"YOYO-01","Conflicting company or title","Hold the prospect until the conflicting fields are resolved.","Critical","Illustrative design example; no scored model output"
+"YOYO-02","Unsupported performance claim","Request bounded correction; hold if the claim remains unsupported.","Critical","Illustrative design example; no scored model output"
+"YOYO-03","Repeated review submission","Apply the decision once to the correct persisted draft.","Material","Illustrative design example; no scored model output"

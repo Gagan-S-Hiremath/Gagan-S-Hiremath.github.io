@@ -1,0 +1,6 @@
+﻿"artifact_status","priority","capability","acceptance_criterion"
+"Independent design","P0","Hard constraints","Given a budget of ₹4,000, no item above ₹4,000 appears as a qualifying recommendation."
+"Independent design","P0","Evidence-based fit","Given a 16-inch laptop request, confirm compatibility only where catalog dimensions or fit data support it."
+"Independent design","P0","No-match recovery","Given no item satisfies all hard constraints, show no-match and ask which constraint can change."
+"Independent design","P1","Comparison","Given a shortlist, compare the same attributes and mark missing values as unknown."
+"Independent design","P1","Cart handoff","Given stock or price changes, require renewed confirmation before handoff."
