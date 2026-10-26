@@ -1,10 +1,10 @@
-# YOYO prototype verification
+# LinkedIn Prospect Research & Personalised Outreach Agent — prototype verification
 
 Status: source-reviewed local prototype. Independent project; no employer or commercial endorsement implied.
 
 ## Fresh offline checks — 26 October 2026
 
-69 checks passed in 14.64 seconds across test_agents.py, test_graph_review.py, and test_product_claim_validation.py. Execution used API-shaped provider doubles, synthetic fixtures, temporary SQLite records, and real LangGraph checkpoints. This is a focused regression subset, not a complete-suite or model-quality benchmark.
+The full offline suite passed 158 tests in 37.71 seconds; 11 opt-in live-provider tests were skipped. The earlier focused subset passed 69 tests in 14.64 seconds. Execution used API-shaped provider doubles, synthetic fixtures, temporary SQLite records, and real LangGraph checkpoints. The full suite covers deterministic validation, agent contracts, provider-shaped mocks, persistence, graph review, Streamlit UI and Windows startup. These software results are not a model-quality or business-outcome benchmark.
 
 Checks cover CSV validation, conflicting identity, evidence linkage, role-led/signal-led routing, bounded correction, Approve/Edit/Reject, repeated submissions, review integrity, and product-claim boundaries.
 

@@ -1,12 +1,12 @@
 window.PROJECTS = [
   {
     "id": "sla",
-    "name": "SLA Document Intelligence",
-    "category": "Enterprise AI / Document intelligence",
+    "name": "SLA Intelligence: KPI Extraction, Analytics & AI Assistant",
+    "category": "Enterprise AI / Analytics & conversational access",
     "kind": "Professional experience",
     "visual": "sla",
-    "headline": "Turning SLA documents into validated operational intelligence.",
-    "summary": "Extract contractual KPIs, validate exceptions, and give operations teams reliable access to service commitments.",
+    "headline": "From SLA documents to dashboards. Then to grounded answers.",
+    "summary": "An enterprise AI solution that extracts and maps KPIs from SLA documents, powers Power BI dashboards, and enables users to ask questions about SLA information through a conversational RAG assistant.",
     "tags": [
       "Document AI",
       "Human review",
@@ -15,67 +15,78 @@ window.PROJECTS = [
     ],
     "role": "Product Manager · Value Groups",
     "period": "March 2024 – May 2025",
-    "scope": "Extraction → validation → insight",
-    "disclosure": "Professional experience at Value Groups. The product title is descriptive. Portfolio diagrams, requirements, and evaluation plans are retrospective reconstructions using synthetic examples.",
-    "problem": "SLA analysts manually searched contracts, interpreted KPI tables, and consolidated reporting. Different layouts, scanned pages, merged cells, and repeated attributes made the workflow slow and error-prone. Operations teams lacked a consistent view of their service commitments.",
+    "scope": "Document intelligence → Power BI analytics → RAG assistant",
+    "disclosure": "Professional experience at Value Groups. The title is descriptive. The two capabilities reflect the professional project; the diagrams, PRD, backlog, synthetic examples, and evaluation plans are retrospective portfolio reconstructions.",
+    "problem": "SLA information was spread across documents with different layouts, contractual definitions, targets, and conditions. Analysts had to extract and reconcile that information before it could support consistent business reporting. Power BI addressed reporting needs; a later RAG assistant addressed the separate need to find and understand SLA content in natural language.",
     "persona": "Operations lead / SLA analyst",
-    "quote": "I need to know which service commitment applies—and be able to trace it back to the contract.",
-    "empathy": "The analyst needs accurate extraction with clause-level traceability. The operations lead needs approved KPIs without opening every contract. Both need a clear review path when documents contain conflicting thresholds.",
+    "empathy": "SLA analysts need reviewable fields and source context. Reporting teams need approved KPI mappings that fit downstream data assets. Business users need Power BI views for performance analysis and conversational access for questions about definitions, targets, and contractual conditions.",
     "discovery": [
-      "Map document arrival, extraction, validation, reporting, and query workflows.",
-      "Interview analysts and operations leads about review effort, exceptions, and trust.",
-      "Baseline processing time and retrieval time separately, using comparable documents and tasks."
+      "Professional context: document variability, merged cells, repeated attributes, and schema expansion informed the workflow requirements.",
+      "Reconstructed discovery: map analyst review, dashboard use, and document lookup as distinct user journeys. No interview findings or quotes are presented.",
+      "Further validation proposed: observe representative reporting and SLA lookup tasks; establish separate baselines for review effort and time to a supported answer."
     ],
-    "ai": "OCR identifies text and document layout. An LLM maps different contractual terms to a standard KPI schema. Retrieval-augmented generation (RAG) provides answers from approved records and relevant clauses. Schema validation and human review control what reaches reporting.",
-    "alternative": "Use template-based parsing for consistent document layouts. Use AI where terminology and structure vary. Keep manual validation for ambiguous clauses and unreadable scans.",
-    "decision": "Preserve the source clause for every extracted KPI. Route conflicting values to an analyst before publishing them.",
+    "ai": "Azure AI Document Intelligence handles OCR and layout extraction for scanned and digital documents. Azure OpenAI supports semantic interpretation, KPI identification, and mapping inconsistent terms to business definitions. RAG subsequently makes relevant SLA content available to a language model for contextual answers. Structured checks, approved mappings, and human validation remain essential.",
+    "alternative": "Use conventional parsing for stable layouts and explicit fields, SQL and data pipelines for structured transformations, and Power BI for reporting. AI adds value where language and document structure vary. Conversational retrieval complements dashboards; it does not replace deterministic metric calculations.",
+    "decision": "Build validated KPI extraction and Power BI reporting first, then add document-grounded conversational access. Preserve the distinction between contractual SLA knowledge and live operational performance.",
     "metrics": [
       [
-        "KPI extraction accuracy",
-        "Correct required fields ÷ reviewed required fields",
-        "Proposed: ≥95% on the held-out set",
-        "Prevents incorrect contractual targets from entering reporting."
+        "Field extraction accuracy",
+        "Correct annotated field values ÷ annotated required fields",
+        "Proposed held-out document review; no historical score",
+        "Prevents missing or incorrect definitions, targets and conditions."
       ],
       [
-        "Processing time",
-        "Median time from intake to approved KPI register",
-        "Compare with the manual baseline",
-        "Measures operational efficiency across extraction and review."
+        "Semantic mapping accuracy",
+        "Correct approved-definition and asset mappings ÷ reviewed mapping decisions",
+        "Business-owner gold labels; analyse ambiguous mappings separately",
+        "Prevents equivalent labels being confused with different contractual obligations."
       ],
       [
-        "Retrieval time",
-        "Median time to find the correct KPI and clause",
-        "Compare with the manual lookup baseline",
-        "Measures how quickly teams can act on contractual information."
+        "Source traceability",
+        "Extracted fields with correct supporting document context ÷ reviewed fields",
+        "Audit source/context linkage; separate from chatbot citations",
+        "Lets reviewers resolve errors before reporting publication."
       ],
       [
-        "Reviewer correction rate",
-        "Corrected fields ÷ reviewed extracted fields",
-        "Track by document type; reduce over releases",
-        "Identifies extraction errors and hidden review effort."
+        "Retrieval relevance",
+        "Relevant evidence retrieved ÷ reviewed retrieved items; also track evidence coverage",
+        "Proposed expert-labelled SLA question set",
+        "Identifies whether retrieval gives the model the material needed to answer."
       ],
       [
-        "Active-team adoption",
-        "Teams using approved KPIs each month",
-        "Track activation and repeat usage",
-        "Shows whether the solution becomes part of the operating workflow."
+        "Answer correctness and groundedness",
+        "Correct answers ÷ reviewed answers; supported factual claims ÷ reviewed factual claims",
+        "Score separately using SLA references and an analyst rubric",
+        "Separates an accurate conclusion from one merely phrased convincingly."
       ],
       [
-        "Cost per approved document",
-        "Processing + retries + review cost ÷ approved documents",
-        "Set a ceiling after baseline measurement",
-        "Keeps automation savings meaningful after human-review costs."
+        "Unsupported-answer rate",
+        "Answers containing unsupported factual claims ÷ reviewed answers",
+        "Include unanswerable and contradictory questions; report counts",
+        "Determines whether scope or retrieval must be tightened before expansion."
+      ],
+      [
+        "Human correction and task completion",
+        "Corrected fields ÷ reviewed fields; correctly completed tasks ÷ attempted tasks",
+        "Reviewer workflow and observed user tasks; baseline not documented",
+        "Shows hidden review work and whether users finish their actual task."
+      ],
+      [
+        "Latency and total task cost",
+        "p50/p95 end-to-end duration; processing + retry + review cost ÷ successful tasks",
+        "Separate documents and questions; establish budgets before a pilot",
+        "Balances user responsiveness and operating cost with quality."
       ]
     ],
     "architecture": [
-      "SharePoint intake",
+      "SLA documents",
       "OCR & layout",
-      "LLM schema mapping",
-      "SQL validation",
-      "Human review",
-      "Power BI / RAG"
+      "KPI extraction & mapping",
+      "Validation & human review",
+      "Approved structured data",
+      "Power BI dashboards"
     ],
-    "archNote": "The documented workflow uses SharePoint and Power Automate for intake, Azure AI Document Intelligence for OCR and layout, Azure OpenAI for semantic mapping, and SQL for validation state. Data Factory and Databricks support downstream data integration; Power BI provides reporting. Human approval precedes publication.",
+    "archNote": "Capability 1: SharePoint and Power Automate support intake; Azure AI Document Intelligence extracts OCR/layout; Azure OpenAI supports interpretation and KPI mapping. SQL tracks structured records and validation. Azure Data Factory and Databricks support downstream integration with Hive-based data assets and reporting tables; Power BI presents analytics. Capability 2 was added later: user question → retrieval of relevant SLA content → context-grounded generation → response. The available evidence does not establish a specific index service, chunking strategy, citation feature, or live dashboard query integration.",
     "tradeoffs": [
       [
         "Flexible schema vs. reliable reporting",
@@ -91,140 +102,167 @@ window.PROJECTS = [
       ]
     ],
     "prd": {
-      "goal": "Make approved SLA commitments accessible as structured data and source-grounded answers.",
-      "user": "SLA analysts, operations leads, and business reporting teams.",
-      "include": "One representative document family first; 15 core KPI definitions; evidence links; validation queue; reporting export; grounded queries.",
-      "exclude": "Contract interpretation as legal advice, autonomous contract changes, and automatic publication of unresolved values.",
-      "requirements": "Preserve source references; version schemas; detect missing required fields; record reviewer decisions; prevent unapproved records entering reporting.",
-      "failure": "Unreadable scans → request a clearer copy. Conflicting values → show both sources and require review. Missing evidence → do not invent a value."
+      "goal": "Turn document-bound SLA commitments into approved KPI data, business analytics, and subsequent natural-language access to SLA knowledge.",
+      "user": "SLA analysts, reporting teams, operations leaders, and business users.",
+      "include": "Original capability: document intake, OCR/layout, KPI extraction and semantic mapping, validation, structured data integration, and Power BI dashboards. Subsequent enhancement: retrieval and context-grounded answers about SLA content.",
+      "exclude": "Autonomous contract changes, legal advice, unvalidated data publication, and claims of live Power BI queries or guaranteed citations in the assistant.",
+      "requirements": "Capture KPI name, definition, target, unit, threshold, period, conditions and exclusions when present. Preserve contractual context and source references. Map to approved business definitions and downstream assets. Require validation before publication. Keep conversational answers within retrieved SLA evidence.",
+      "failure": "Unreadable input requires review or a clearer document. Conflicting fields retain both contexts for resolution. Unmapped definitions remain exceptions. Proposed assistant acceptance behavior: say when the available SLA evidence cannot support an answer and route the question for review."
     },
     "backlog": [
       [
-        "P0",
-        "Evidence-linked extraction",
-        "Given a KPI is extracted, its source document, page, and supporting text are visible."
+        "P0 · Original capability",
+        "Document intake and OCR/layout",
+        "Preserve document identity and layout context; unreadable or incomplete inputs enter review."
       ],
       [
-        "P0",
-        "Validation queue",
-        "Given required values conflict, publication is blocked until a reviewer resolves the conflict."
+        "P0 · Original capability",
+        "KPI extraction and semantic mapping",
+        "Retain definition, target, unit and conditions where present; unresolved business mappings cannot be silently accepted."
       ],
       [
-        "P0",
-        "Canonical schema",
-        "Given a new layout, output must pass the versioned schema or enter review; fields are not silently discarded."
+        "P0 · Original capability",
+        "Validation and downstream reporting",
+        "Only approved records enter reporting; reconcile document, KPI mapping and dashboard interpretation."
       ],
       [
-        "P1",
-        "Grounded query",
-        "Given no approved evidence supports an answer, the interface states that it cannot confirm the answer."
+        "P1 · Subsequent enhancement",
+        "SLA conversational retrieval",
+        "Given a question about an SLA clause, retrieve relevant document content before generating an answer; do not describe a contractual target as measured performance."
       ],
       [
-        "P1",
-        "Feedback and audit",
-        "Given a correction, retain the prior value, reviewer decision, and document version."
+        "P1 · Reconstructed quality requirement",
+        "Insufficient or conflicting answer evidence",
+        "Communicate insufficient evidence or ambiguity; unsupported answers fail qualification."
+      ],
+      [
+        "P1 · Proposed improvement",
+        "Regression and monitoring loop",
+        "Map each confirmed failure to a regression case, accountable backlog item and re-release decision."
       ]
     ],
     "steps": [
       [
-        "Ingest",
-        "Start with the source",
-        "An analyst submits a synthetic SLA. The intake record preserves its version and processing state.",
-        "Illustrative file: managed-services-sample.pdf\nStatus: queued → processing"
-      ],
-      [
         "Extract",
-        "Make the evidence visible",
-        "OCR and semantic mapping propose a KPI with the source passage beside it.",
-        "KPI: Service availability\nTarget: 99.9%\nEvidence: page 3, section 4.2"
+        "Capture the contractual fields",
+        "A synthetic logistics clause illustrates the extraction shape; it is not a client document or a verified implemented KPI.",
+        "Illustrative clause: “The on-time delivery target is 98% for the monthly reporting period. Approved customer-requested deferrals are excluded.”"
       ],
       [
-        "Review",
-        "Treat uncertainty as a workflow",
-        "A second table contains a different threshold. The analyst must select the applicable clause before publication.",
-        "Conflict: 99.9% vs 99.5%\nAction: requires human validation\nPublish: blocked"
+        "Map & review",
+        "Preserve the agreement’s meaning",
+        "Keep the source label, target, period and exclusion together. A business reviewer must approve any mapping to a canonical definition.",
+        "Synthetic fields: name = on-time delivery; target = 98%; period = monthly; exclusion = approved customer deferrals; formula = not specified."
       ],
       [
-        "Use",
-        "Publish approved intelligence",
-        "The approved KPI appears in reporting and a grounded response can link back to its source.",
-        "Validation: approved (illustrative)\nOutput: KPI register + source reference\nNext: dashboard / grounded query"
+        "Analyse",
+        "Make approved information usable in Power BI",
+        "Validated structured KPI data supports reporting integration and Power BI dashboard analysis. This is a workflow illustration, not a dashboard screenshot.",
+        "Original capability: approved records → downstream data assets → reporting tables → Power BI."
+      ],
+      [
+        "Ask",
+        "Add conversational access to SLA content",
+        "Later, a user can ask about the relevant contractual condition. The RAG workflow retrieves SLA evidence and uses that context to formulate an answer.",
+        "Synthetic question: “Which deferrals are excluded?”\nSupported content: approved customer-requested deferrals.\nThis does not establish current delivery performance."
       ]
     ],
     "offline": [
       [
-        "Dataset",
-        "Proposed 50-case development set: 30 typical, 10 edge, 10 adversarial; separate 50-case held-out set. Split by base document to avoid near-duplicate leakage."
+        "Evidence status",
+        "Reconstructed evaluation design; no execution scores or dataset size are claimed. Software tests, deterministic validation, model-quality evaluation and human review must be reported separately."
       ],
       [
-        "Gold labels",
-        "An analyst labels fields and supporting evidence; a second reviewer resolves disagreements."
+        "Document dataset",
+        "Curate authorised or synthetic scanned/digital documents with varied layouts, merged cells, repeated fields and conflicting targets. Split by contract family/version to prevent leakage."
       ],
       [
-        "Checks",
-        "Exact field match, source entailment, table-context mapping, required-field completeness, injection resistance."
+        "Extraction and mapping labels",
+        "Domain reviewers label required fields, source context and approved business/asset mappings; adjudicate disagreements. Slice failures by field, layout and scan quality."
       ],
       [
-        "Analysis",
-        "Compare prompt versions by document family, merged cells, repeated keys, scan quality, and severity. List every regression."
+        "RAG dataset",
+        "Create answerable, unanswerable, conflicting and live-performance questions with relevant source passages and reference answers. Evaluate retrieval before answer generation."
+      ],
+      [
+        "Release analysis",
+        "Compare versions on the same held-out set. Record per-capability failures, critical regressions, abstentions, correction effort, latency and cost. Source-attribution scoring applies only if a citation feature is verified."
       ]
     ],
     "online": [
       [
-        "Quality",
-        "Sample approved records for source-backed correctness; track reviewer correction rate and escaped errors."
+        "Document and reporting quality",
+        "Proposed: sample approved records and downstream mappings; track corrections, reconciliation errors, queue age and document-format drift."
       ],
       [
-        "User value",
-        "Observe completion time for processing and retrieval as separate workflows."
+        "Conversational quality",
+        "Proposed: sample permission-controlled traces and analyst reviews for correctness, groundedness, unsupported answers, evidence insufficiency and retrieval failure."
       ],
       [
-        "Operations",
-        "Monitor queue age, human-review workload, p50/p95 latency, failures, and cost per accepted document."
+        "Operations and privacy",
+        "Proposed: track latency, tool failures and total task cost with redacted logs, access restrictions and defined retention. LangSmith is a possible tracing/evaluation improvement, not a tool claimed for this project."
       ],
       [
-        "Feedback loop",
-        "Turn corrected and failed documents into new regression cases; re-run after prompt, model, or schema changes."
+        "Business outcomes",
+        "Proposed: measure processing/review effort, reporting-task completion, time to a supported SLA answer and repeat usage against comparable manual tasks. Do not infer business uplift from model scores."
       ]
     ],
     "evalCases": [
       [
-        "SLA-01",
-        "Merged target table",
-        "Preserve heading context and extract the correct target.",
+        "DOC-01",
+        "Merged target cells and repeated KPI names",
+        "Preserve header/condition context and map the applicable field to its source.",
         "Material"
       ],
       [
-        "SLA-02",
-        "Unreadable scan",
-        "Request clearer input; do not fabricate a threshold.",
+        "MAP-01",
+        "Same label, different contractual exclusions",
+        "Keep the definitions distinct until an approved business mapping resolves them.",
         "Material"
       ],
       [
-        "SLA-03",
-        "Instructions hidden in document",
-        "Treat embedded instructions as source data, not system commands.",
+        "DOC-02",
+        "Conflicting targets across clauses",
+        "Retain both contexts and require resolution before reporting publication.",
+        "Critical"
+      ],
+      [
+        "RAG-01",
+        "Question answerable from the SLA",
+        "Retrieve the relevant content and return an answer supported by that content.",
+        "Material"
+      ],
+      [
+        "RAG-02",
+        "Insufficient or conflicting evidence",
+        "State the limitation or ambiguity; do not invent the missing fact.",
+        "Critical"
+      ],
+      [
+        "RAG-03",
+        "“What was our actual OTIF performance yesterday?”",
+        "Do not infer live operational performance from a contractual SLA target.",
         "Critical"
       ]
     ],
-    "launch": "Proposed sequence: offline qualification → internal analyst review → shadow processing → a limited document-family pilot → gradual expansion. No historical rollout evidence is claimed here.",
-    "gate": "Proposed launch gate: required-field quality meets the predeclared target, unresolved conflicts cannot publish, and no critical leakage or instruction-following failures occur in the qualification suite. A zero count in a small test set is not proof of zero production risk.",
-    "rollback": "Pause automated publication on a critical evidence failure or data exposure. Revert to manual validation, retain queued documents, and roll back the prompt/schema version. Name an operations owner and on-call engineering owner before a pilot.",
-    "next": "Prioritize document families by ambiguity and review burden. Measure extraction quality and reviewer effort together before expanding automated publication.",
+    "launch": "Professional project sequence: document processing, KPI mapping and Power BI dashboards, followed by the RAG assistant. The release gates and pilot sequence described here are reconstructed recommendations, not a claim about the original launch procedure.",
+    "gate": "Proposed release decision: agree task-specific quality thresholds with business owners; resolve critical extraction and mapping failures; verify approval boundaries and downstream reconciliation; qualify retrieval and answers separately; demonstrate support, privacy controls and rollback. No historical scores or universal numerical threshold is asserted.",
+    "rollback": "Proposed operating control: pause affected reporting publication on material mapping errors and route documents to manual review. Disable conversational answers for affected content when evidence quality fails; retain dashboard access where unaffected. Revert the relevant model, prompt, mapping, or retrieval configuration after impact review.",
+    "next": "Separate extraction errors, mapping errors, retrieval failures, and unsupported answers in the feedback backlog. Requalify affected document families and question types before each release.",
     "sources": [],
     "slug": "sla-document-intelligence",
     "featured": true,
     "status": "Professional experience",
     "users": "SLA analysts & operations leaders",
-    "evidence": "Professional workflow · reconstructed product artifacts",
-    "contribution": "Product definition, MVP scope, user stories, acceptance criteria, and coordination across document processing, validation, and reporting.",
-    "learning": "Schema flexibility creates reporting complexity. The next product decision is which KPI fields belong in the canonical schema and which should remain contextual attributes. Source traceability and approval state are essential to that decision.",
-    "outcome": "The professional solution connected document parsing, KPI extraction, human validation, dashboards, and conversational access. It improved access to SLA information and reduced manual processing and retrieval effort. Quantified impact is not presented without measurement context."
+    "evidence": "Professional project context · two-capability architecture · reconstructed product artifacts",
+    "contribution": "Product definition, phased MVP scope, user stories, acceptance criteria, and coordination across extraction, KPI mapping, analytics, and subsequent conversational access.",
+    "learning": "Extraction, reporting, and conversational access solve different tasks. A correct extracted target is not a live performance reading, and a fluent answer is not evidence of correctness. Prioritise source-backed mappings and independent retrieval/answer evaluation before expanding coverage.",
+    "outcome": "Delivered connected capabilities for turning SLA documents into structured KPI information, analysing performance through Power BI dashboards, and retrieving and understanding SLA content through a subsequent RAG assistant. Numerical business impact and production evaluation scores are not presented."
   },
   {
     "id": "yoyo",
     "slug": "yoyo-prospecting-agent",
-    "name": "YOYO Prospecting Agent",
+    "name": "LinkedIn Prospect Research & Personalised Outreach Agent",
     "headline": "Research-led prospecting with a human decision at the end.",
     "summary": "A local B2B prospecting prototype that connects account research, capability mapping, draft validation, and human review.",
     "category": "B2B SaaS / Agentic AI",
@@ -236,9 +274,9 @@ window.PROJECTS = [
     "role": "Independent product definition & AI workflow design",
     "period": "Prototype reviewed · October 2026",
     "scope": "Prospect context → research → strategy → draft → review",
-    "evidence": "69 focused offline checks passed · source-reviewed implementation",
+    "evidence": "158 offline tests passed · 11 live tests skipped · genuine prototype UI",
     "contribution": "Define the prospecting workflow, qualify product claims, scope human review, and translate reliability requirements into agent handoffs and acceptance criteria.",
-    "disclosure": "Independent prototype based on accessible local source. No employment, partnership, or endorsement by YOYO is implied. Offline checks use mocked provider responses; customer response and conversion outcomes have not been measured.",
+    "disclosure": "Independent prototype for researching user-supplied prospect context and preparing personalised outreach drafts. It does not log into LinkedIn, scrape profiles, or send messages. No employment, partnership, or endorsement by LinkedIn or YOYO is implied. Offline checks use mocked provider responses; customer response and conversion outcomes have not been measured.",
     "problem": "Sales teams must research an account, decide whether it is relevant, identify a supported business need, and write a credible first message. Manual research is inconsistent, while automated outreach can produce generic copy or unsupported claims. The product opportunity is to reduce research effort while preserving relevance, factual support, and reviewer control.",
     "persona": "Sales development representative / sales manager",
     "quote": "Give me a relevant reason to contact this account, and show me the evidence before I approve the message.",
@@ -397,7 +435,7 @@ window.PROJECTS = [
     "offline": [
       [
         "Executed checks",
-        "A fresh focused run passed 69 tests across agent contracts, graph/review behavior, and product-claim validation. Provider responses were mocked; this is software regression evidence, not model-quality accuracy."
+        "The full offline suite passed 158 tests in 37.71 seconds; 11 opt-in live-provider tests were skipped. Coverage includes agent contracts, persistence, review controls, Streamlit UI and startup, and claim boundaries. This is software regression evidence, not model-quality accuracy."
       ],
       [
         "Dataset and boundaries",
@@ -454,7 +492,7 @@ window.PROJECTS = [
     "gate": "Require valid evidence boundaries, isolated prospect state, reliable review actions, and no unresolved critical regressions. Pilot approval also requires acceptable reviewer-labeled relevance, cost, and manual-review effort.",
     "rollback": "Pause new jobs on provider or integrity failures. Preserve persisted drafts and review records. Return to manual research and drafting; do not automatically replay interrupted paid calls.",
     "next": "Prioritize reviewer-labeled prospect suitability and draft relevance. Add numerical ICP scoring only after eligibility criteria are stable and validated.",
-    "outcome": "Implemented CSV-to-human-review workflow with persistent state and bounded model/tool stages. A fresh run passed 69 focused offline tests. There is no measured reply-rate, meeting-conversion, or customer-efficiency improvement.",
+    "outcome": "Implemented CSV-to-human-review workflow with persistent state and bounded model/tool stages. The full offline suite passed 158 tests; 11 opt-in live-provider tests were skipped. There is no measured reply-rate, meeting-conversion, or customer-efficiency improvement.",
     "learning": "Reliability depends on evidence boundaries and review-state integrity as much as message quality. The next product decision is whether the workflow saves reviewer time while improving qualified engagement.",
     "sources": []
   },
