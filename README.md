@@ -1,4 +1,4 @@
-# Gagan S S — AI Product Manager
+# Gagan S S — Product Manager
 
 **[View the live portfolio](https://gagan-s-hiremath.github.io/)**
 
@@ -14,7 +14,7 @@ Product strategy, agentic AI, generative AI, and enterprise workflows—from cus
 
 ## Evidence policy
 
-Professional scope, executed software tests, synthetic examples and proposed targets are separated. Numerical business-impact claims without measurement context are omitted from promotional copy. The supplied resume is available unchanged. No customer data, credentials, private databases, or proprietary source code is published.
+Professional scope, executed software tests, synthetic examples and proposed targets are separated. Résumé-reported professional outcomes are attributed to the supplied November 2026 résumé; measurement periods, sample sizes and causal attribution are not independently documented here. These outcomes are separate from prototype test results and proposed evaluation targets. The supplied resume is available unchanged. No customer data, credentials, private databases, or proprietary source code is published.
 
 ## Structure
 

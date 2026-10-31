@@ -1179,5 +1179,5 @@ window.projectBrief = function(p) {
     ['11 · Online evaluation plan',lines(p.online)+'\n\nRun a controlled pilot before broad release. Declare the primary outcome, guardrails, randomization unit, and sample-size plan before an A/B test.'],
     ['12 · Deployment & go-live',p.launch+'\n\nDeployment readiness: version the model, prompt, tools, and configuration; complete staging and user acceptance testing; assign owners; verify alerting and rollback.\n\nRollback: '+p.rollback+'\n\nPost-launch priorities: '+p.next]
   ];
-  return '# '+p.name+'\n\nGagan S S — AI Product Manager\n\n'+p.disclosure+'\n\n'+sections.map(([title,body])=>'## '+title+'\n\n'+body).join('\n\n')+'\n';
+  return '# '+p.name+'\n\nGagan S S — Product Manager\n\n'+p.disclosure+'\n\n'+sections.map(([title,body])=>'## '+title+'\n\n'+body).join('\n\n')+'\n';
 };

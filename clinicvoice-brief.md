@@ -1,6 +1,6 @@
 # ClinicVoice
 
-Gagan S S — AI Product Manager
+Gagan S S — Product Manager
 
 Independent English-only product design. Calls, slots, and booking records are synthetic. The walkthrough illustrates an MVP; it does not process real calls or provide clinical advice.
 

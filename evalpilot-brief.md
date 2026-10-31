@@ -1,6 +1,6 @@
 # EvalPilot
 
-Gagan S S — AI Product Manager
+Gagan S S — Product Manager
 
 Independent product design. Screens and scenarios are illustrative. Evaluation targets and deployment steps are proposed; live results are not claimed.
 

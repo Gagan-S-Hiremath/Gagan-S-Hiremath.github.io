@@ -4,7 +4,8 @@ for(const name of ['projects.js','case-view.js','sla-case.js','lifecycle-case.js
 const projects=ctx.window.PROJECTS,home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 assert.deepEqual(Array.from(projects.filter(p=>p.featured),p=>p.id),['sla','yoyo','cartwise']);
 assert.ok(!home.includes('Accord AI')&&!home.includes('{{'));
-for(const forbidden of ['85%','90%','500+','3×','8+ client','40+ member'])assert.ok(!home.includes(forbidden),forbidden);
+assert.ok(!home.includes('500+')&&!home.includes('AI Product<br>Manager'));
+for(const required of ['JUN 2025 — SEP 2026','120+ teams','November 2026 résumé','Product<br>Manager','Mars, Dell and Walmart'])assert.ok(home.includes(required),required);
 assert.ok(home.includes('tel:+918660123175'));
 assert.ok(home.includes('https://www.linkedin.com/in/gagan-s-hiremath-566746225/'));
 assert.ok(home.includes('rel="canonical"')&&home.includes('og:image'));
