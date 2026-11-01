@@ -32,7 +32,13 @@ assert.equal((slaHtml.match(/class="case-section lifecycle-phase"/g)||[]).length
 for(const phrase of ['Subsequent capability: conversational RAG','Business Outcome Monitoring','98%; monthly period','not a live operational measurement','Source attribution applies only'])assert.ok(slaHtml.includes(phrase),phrase);
 assert.ok(!slaHtml.includes('≥95%')&&!slaHtml.includes('Power BI / RAG'));
 assert.ok(fs.readFileSync(path.join(root,'sla-document-intelligence-architecture.svg'),'utf8').includes('Subsequent enhancement'));
-for(const name of ['index.html',...projects.map(p=>p.slug+'.html')]){
+const crmHtml=fs.readFileSync(path.join(root,'nextgen-customer-intelligence.html'),'utf8');
+assert.equal((crmHtml.match(/id="stage-\d+"/g)||[]).length,16,'CRM lifecycle coverage');
+for(const ref of ['crm-prototype/index.html','crm-architecture/index.html','crm-preview.png','nextgen-verification.md','nextgen-technical-design.md'])assert.ok(crmHtml.includes(ref)&&fs.existsSync(path.join(root,ref)),ref);
+assert.ok(home.includes('Read NextGen Customer Intelligence case study'));
+assert.ok(crmHtml.includes('simulated intelligence')&&crmHtml.includes('No production online-evaluation results'));
+assert.ok(!fs.readFileSync(path.join(root,'crm-prototype/index.html'),'utf8').includes('src="/assets/'));
+for(const name of ['index.html','nextgen-customer-intelligence.html',...projects.map(p=>p.slug+'.html')]){
  const html=fs.readFileSync(path.join(root,name),'utf8');
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);assert.equal(new Set(ids).size,ids.length,name+': duplicate ID');
  for(const [,ref] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
