@@ -36,6 +36,7 @@ const crmHtml=fs.readFileSync(path.join(root,'nextgen-customer-intelligence.html
 assert.equal((crmHtml.match(/id="stage-\d+"/g)||[]).length,16,'CRM lifecycle coverage');
 for(const ref of ['crm-prototype/index.html','crm-architecture/index.html','crm-preview.png','nextgen-verification.md','nextgen-technical-design.md'])assert.ok(crmHtml.includes(ref)&&fs.existsSync(path.join(root,ref)),ref);
 assert.ok(home.includes('Read NextGen Customer Intelligence case study'));
+assert.ok(home.includes('Selected projects')&&!home.includes('Selected work'));
 assert.ok(crmHtml.includes('simulated intelligence')&&crmHtml.includes('No production online-evaluation results'));
 assert.ok(!fs.readFileSync(path.join(root,'crm-prototype/index.html'),'utf8').includes('src="/assets/'));
 for(const name of ['index.html','nextgen-customer-intelligence.html',...projects.map(p=>p.slug+'.html')]){
